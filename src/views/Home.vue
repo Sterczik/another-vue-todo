@@ -1,17 +1,21 @@
 <template>
   <div>
-    <HelloWorld msg="Vue Todo List"/>
+    <TodoList :todos="todos"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
+import TodoList from '@/components/TodoList.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    TodoList,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  get todos() {
+    return this.$store.getters.todos;
+  }
+}
 </script>
